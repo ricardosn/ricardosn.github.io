@@ -1,13 +1,13 @@
 ---
 layout: post
-title:  "Base Entity"
+title:  "Java Persistence API: Criando uma base entity"
 date:   2020-08-17 01:05:31 -0300
-categories: java
+categories: java jpa
 ---
 # Introdução
-Todas as entidades JPA tem pontos em comum e é uma boa prática agruparmos todos essas características numa BaseEntity para fins de reutilização de código e organização. Abaixo demonstrarei alguns itens interessantes que podemos configurar nessa classe.
+Todas as entidades JPA tem pontos em comum e é uma boa prática agruparmos todos essas características numa Base Entity para fins de reutilização de código e organização. Abaixo demonstrarei alguns itens interessantes que podemos configurar nessa classe.
 
-# BaseEntity
+# Base Entity
 
 {% highlight java %}
 @MappedSuperclass
@@ -33,7 +33,7 @@ public abstract class BaseEntity implements Serializable {
 }
 {% endhighlight java %}
 
-- `@MappedSuperclass`: Essa anotação faz com que não se tenha uma representação em tabela separada para essa classe, ou seja, os campos dessa classe serão gravados na tabela da classe que ela for extendida.
+- `@MappedSuperclass`: Essa é a anotação mais importante! Faz com que não se tenha uma representação em uma tabela separada para essa classe, ou seja, os campos dessa classe serão gravados na tabela da classe que ela for extendida.
 - `public abstract class BaseEntity`: Não faz sentido instanciar a BaseEntity, por isso utilizamos uma classe abstrata.
 - `@CreationTimestamp`: Adiciona o timestamp do momento atual quando o registro for criado.
 - `@UpdateTimestamp`: Adiciona o timestamp do momento atual quando o registro for alterado.
