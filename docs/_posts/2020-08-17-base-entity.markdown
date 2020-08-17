@@ -37,5 +37,5 @@ public abstract class BaseEntity implements Serializable {
 - `public abstract class BaseEntity`: Não faz sentido instanciar a BaseEntity, por isso utilizamos uma classe abstrata.
 - `@CreationTimestamp`: Adiciona o timestamp do momento atual quando o registro for criado.
 - `@UpdateTimestamp`: Adiciona o timestamp do momento atual quando o registro for alterado.
-- `@Version`: Optimistic Locking. Quando instanciar pela primeira vez, o valor do `version` fica igual a zero e toda vez que vc salvar ou alterar essa isntancia ele é incrementado em 1. Caso esse valor mude enquanto estiver tentando salvar, retorna um exceção. 
+- `@Version`: Optimistic Locking. Quando instanciar pela primeira vez, o valor do `version` fica igual a zero e toda vez que vc salvar ou alterar essa instância ele é incrementado em 1. Caso esse valor mude enquanto estiver tentando salvar, retorna um exceção. 
 
