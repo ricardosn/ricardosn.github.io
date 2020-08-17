@@ -10,9 +10,6 @@ Todas as entidades JPA tem pontos em comum e é uma boa prática agruparmos todo
 # BaseEntity
 
 {% highlight java %}
-@Getter
-@AllArgsConstructor
-@NoArgsConstructor
 @MappedSuperclass
 @EqualsAndHashCode
 @ToString
@@ -36,33 +33,9 @@ public abstract class BaseEntity implements Serializable {
 }
 {% endhighlight java %}
 
+- `@MappedSuperclass`: Essa anotação faz com que não se tenha uma representação em tabela separada para essa classe, ou seja, os campos dessa classe serão gravados na tabela da classe que ela for extendida.
+- `public abstract class BaseEntity`: Não faz sentido instanciar a BaseEntity, por isso utilizamos uma classe abstrata.
+- `@CreationTimestamp`: Adiciona o timestamp do momento atual quando o registro for criado.
+- `@UpdateTimestamp`: Adiciona o timestamp do momento atual quando o registro for alterado.
+- `@Version`: Optimistic Locking. Quando instanciar pela primeira vez, o valor do `version` fica igual a zero e toda vez que vc salvar ou alterar essa isntancia ele é incrementado em 1. Caso esse valor mude enquanto estiver tentando salvar, retorna um exceção. 
 
-
-
-
-
-
-
-You’ll find this post in your `_posts` directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run `jekyll serve`, which launches a web server and auto-regenerates your site when a file is updated.
-
-Jekyll requires blog post files to be named according to the following format:
-
-`YEAR-MONTH-DAY-title.MARKUP`
-
-Where `YEAR` is a four-digit number, `MONTH` and `DAY` are both two-digit numbers, and `MARKUP` is the file extension representing the format used in the file. After that, include the necessary front matter. Take a look at the source for this post to get an idea about how it works.
-
-Jekyll also offers powerful support for code snippets:
-
-{% highlight ruby %}
-def print_hi(name)
-  puts "Hi, #{name}"
-end
-print_hi('Tom')
-#=> prints 'Hi, Tom' to STDOUT.
-{% endhighlight %}
-
-Check out the [Jekyll docs][jekyll-docs] for more info on how to get the most out of Jekyll. File all bugs/feature requests at [Jekyll’s GitHub repo][jekyll-gh]. If you have questions, you can ask them on [Jekyll Talk][jekyll-talk].
-
-[jekyll-docs]: https://jekyllrb.com/docs/home
-[jekyll-gh]:   https://github.com/jekyll/jekyll
-[jekyll-talk]: https://talk.jekyllrb.com/
