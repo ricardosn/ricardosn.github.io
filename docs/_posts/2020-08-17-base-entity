@@ -1,9 +1,48 @@
 ---
 layout: post
-title:  "Welcome to Jekyll!"
-date:   2020-08-16 01:05:31 -0300
-categories: jekyll update
+title:  "Base Entity"
+date:   2020-08-17 01:05:31 -0300
+categories: java
 ---
+# Introdução
+Todas as entidades JPA tem pontos em comum e é uma boa prática agruparmos todos essas características numa BaseEntity para fins de reutilização de código e organização. Abaixo demonstrarei alguns itens interessantes que podemos configurar nessa classe.
+
+# BaseEntity
+
+{% highlight java %}
+@Getter
+@AllArgsConstructor
+@NoArgsConstructor
+@MappedSuperclass
+@EqualsAndHashCode
+@ToString
+public abstract class BaseEntity implements Serializable {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
+
+    @Temporal(TemporalType.TIMESTAMP)
+    @CreationTimestamp
+    private Date createdOn;
+
+    @Temporal(TemporalType.TIMESTAMP)
+    @UpdateTimestamp
+    private Date updatedOn;
+
+    @Version
+    private Long version;
+
+}
+{% endhighlight java %}
+
+
+
+
+
+
+
+
 You’ll find this post in your `_posts` directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run `jekyll serve`, which launches a web server and auto-regenerates your site when a file is updated.
 
 Jekyll requires blog post files to be named according to the following format:
